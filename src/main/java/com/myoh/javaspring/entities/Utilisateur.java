@@ -1,8 +1,4 @@
 package com.myoh.javaspring.entities;
-
-
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 @Entity
@@ -16,8 +12,7 @@ public class Utilisateur {
     public Utilisateur() {
     }
 
-    @JsonCreator
-    public Utilisateur(@JsonProperty ("id") int id,@JsonProperty("email") String email) {
+    public Utilisateur(int id,String email) {
         this.id = id;
         this.email = email;
     }
