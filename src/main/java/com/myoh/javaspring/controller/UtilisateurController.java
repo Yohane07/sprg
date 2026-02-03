@@ -5,6 +5,8 @@ import com.myoh.javaspring.service.UtilisateurService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
@@ -21,5 +23,10 @@ public class UtilisateurController {
     public void creerUnUtilisateur(@RequestBody Utilisateur utilisateur){
         this.utilisateurService.creerUnUtilisateur(utilisateur);
 
+    }
+
+    @GetMapping("utilisateurs")
+    public  List<Utilisateur> getAllUtilisateurs(){
+        return utilisateurService.recupererTousLesUtilisateurs();
     }
 }

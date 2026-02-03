@@ -4,6 +4,8 @@ import com.myoh.javaspring.entities.Utilisateur;
 import com.myoh.javaspring.repositories.UtilisateurRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UtilisateurService {
 
@@ -14,5 +16,9 @@ public class UtilisateurService {
     }
     public void creerUnUtilisateur(Utilisateur utilisateur){
         this.utlisateurRepository.save(utilisateur);
+    }
+
+    public List<Utilisateur> recupererTousLesUtilisateurs() {
+        return this.utlisateurRepository.findAll();
     }
 }
