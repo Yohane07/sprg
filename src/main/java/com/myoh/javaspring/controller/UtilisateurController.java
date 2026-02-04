@@ -25,7 +25,7 @@ public class UtilisateurController {
 
     }
 
-    @GetMapping("utilisateurs")
+    @GetMapping(produces = APPLICATION_JSON_VALUE)
     public  List<Utilisateur> getAllUtilisateurs(){
         return utilisateurService.recupererTousLesUtilisateurs();
     }

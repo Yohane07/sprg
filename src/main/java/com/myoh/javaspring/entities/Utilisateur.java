@@ -6,22 +6,23 @@ import jakarta.persistence.*;
 public class Utilisateur {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
+    @Column(unique = true)
     private String email;
 
     public Utilisateur() {
     }
 
-    public Utilisateur(int id,String email) {
+    public Utilisateur(Integer id,String email) {
         this.id = id;
         this.email = email;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
