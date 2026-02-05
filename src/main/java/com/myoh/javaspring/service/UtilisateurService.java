@@ -14,7 +14,13 @@ public class UtilisateurService {
         this.utlisateurRepository = utlisateurRepository;
     }
     public void creerUnUtilisateur(Utilisateur utilisateur){
-        this.utlisateurRepository.save(utilisateur);
+        Utilisateur utilisateurExistant = this.utlisateurRepository.findByEmail(utilisateur.getEmail());
+        if (utilisateurExistant == null){
+            this.utlisateurRepository.save(utilisateur);
+        }else {
+            //TODO: Récupérer l'adresse mail et le renvoyer dans le retour
+            System.out.print("Il y a déjà un utilisateur enregistré avec cette addresse mail");
+        }
     }
 
     public List<Utilisateur> recupererTousLesUtilisateurs() {

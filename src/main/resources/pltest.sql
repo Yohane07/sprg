@@ -2,7 +2,8 @@ CREATE DATABASE PLTEST;
 
         create table UTILISATEUR(
             ID INTEGER primary key not null AUTO_INCREMENT,
-            EMAIL varchar(50)
+            EMAIL varchar(50) UNIQUE
+            /* EMAIL varchar(50) UNIQUE */
         );
 
         create table AVIS (
