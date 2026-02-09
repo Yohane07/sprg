@@ -1,0 +1,61 @@
+package com.myoh.javaspring.entities;
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "AVIS")
+public class Avis {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Integer id;
+    @Column
+    String description;
+    @Column
+    String type;
+
+    @ManyToOne
+    @JoinColumn(name = "UTILISATEUR_ID")
+    Utilisateur utilisateur;
+
+    public Avis() {
+    }
+
+    public Avis(Integer id, String description, String type, Utilisateur utilisateur) {
+        this.id = id;
+        this.description = description;
+        this.type = type;
+        this.utilisateur = utilisateur;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Utilisateur getUtilisateur() {
+        return utilisateur;
+    }
+
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
+    }
+}

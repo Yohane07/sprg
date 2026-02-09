@@ -29,4 +29,9 @@ public class UtilisateurController {
     public  List<Utilisateur> getAllUtilisateurs(){
         return utilisateurService.recupererTousLesUtilisateurs();
     }
+
+    @GetMapping(path = "{id}", produces = APPLICATION_JSON_VALUE)
+    public  Utilisateur getUtilisateurById(@PathVariable Integer id){
+        return utilisateurService.recupererUnUtilisateur(id);
+    }
 }

@@ -4,6 +4,7 @@ import com.myoh.javaspring.repositories.UtilisateurRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UtilisateurService {
@@ -25,5 +26,10 @@ public class UtilisateurService {
 
     public List<Utilisateur> recupererTousLesUtilisateurs() {
         return this.utlisateurRepository.findAll();
+    }
+
+    public Utilisateur recupererUnUtilisateur(Integer id) {
+        Optional <Utilisateur> utilisateurPossible = this.utlisateurRepository.findById(id);
+        return utilisateurPossible.orElse(null);
     }
 }
