@@ -32,4 +32,12 @@ public class UtilisateurService {
         Optional <Utilisateur> utilisateurPossible = this.utlisateurRepository.findById(id);
         return utilisateurPossible.orElse(null);
     }
+
+    public Utilisateur recupererOuCreerUnUtilisateur(Utilisateur utilisateurACreer) {
+        Utilisateur utilisateurDansLaBDD = this.utlisateurRepository.findByEmail(utilisateurACreer.getEmail());
+        if (utilisateurDansLaBDD == null){
+            utilisateurDansLaBDD = this.utlisateurRepository.save(utilisateurACreer);
+        }
+        return utilisateurDansLaBDD;
+    }
 }

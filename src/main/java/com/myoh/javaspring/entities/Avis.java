@@ -2,6 +2,9 @@ package com.myoh.javaspring.entities;
 
 import jakarta.persistence.*;
 
+import static jakarta.persistence.CascadeType.MERGE;
+import static jakarta.persistence.CascadeType.PERSIST;
+
 @Entity
 @Table(name = "AVIS")
 public class Avis {
@@ -13,7 +16,7 @@ public class Avis {
     @Column
     String type;
 
-    @ManyToOne
+    @ManyToOne(cascade = {PERSIST, MERGE})
     @JoinColumn(name = "UTILISATEUR_ID")
     Utilisateur utilisateur;
 

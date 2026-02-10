@@ -1,6 +1,7 @@
 package com.myoh.javaspring.service;
 
 import com.myoh.javaspring.entities.Avis;
+import com.myoh.javaspring.entities.Utilisateur;
 import com.myoh.javaspring.repositories.AvisRepository;
 import org.springframework.stereotype.Service;
 
@@ -10,16 +11,21 @@ import java.util.Optional;
 @Service
 public class AvisService {
 
-    AvisRepository avisRepository;
+    private UtilisateurService utilisateurService;
+    private AvisRepository avisRepository;
 
-    public AvisService(AvisRepository avisRepository) {
+    public AvisService(UtilisateurService utilisateurService, AvisRepository avisRepository) {
+        this.utilisateurService = utilisateurService;
         this.avisRepository = avisRepository;
     }
+
 
     public List<Avis> recupererLesAvis(){
         return this.avisRepository.findAll();
     }
     public void creerUnAvis(Avis avis){
+        Utilisateur utilisateur = this.utilisateurService.recupererOuCreerUnUtilisateur(avis.getUtilisateur());
+        avis.setUtilisateur(utilisateur);
         this.avisRepository.save(avis);
     }
 
