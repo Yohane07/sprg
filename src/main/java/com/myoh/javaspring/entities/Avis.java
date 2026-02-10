@@ -1,7 +1,7 @@
 package com.myoh.javaspring.entities;
 
+import com.myoh.javaspring.enums.TypeAvis;
 import jakarta.persistence.*;
-
 import static jakarta.persistence.CascadeType.MERGE;
 import static jakarta.persistence.CascadeType.PERSIST;
 
@@ -14,7 +14,7 @@ public class Avis {
     @Column
     String description;
     @Column
-    String type;
+    TypeAvis type;
 
     @ManyToOne(cascade = {PERSIST, MERGE})
     @JoinColumn(name = "UTILISATEUR_ID")
@@ -23,7 +23,7 @@ public class Avis {
     public Avis() {
     }
 
-    public Avis(Integer id, String description, String type, Utilisateur utilisateur) {
+    public Avis(Integer id, String description, TypeAvis type, Utilisateur utilisateur) {
         this.id = id;
         this.description = description;
         this.type = type;
@@ -46,11 +46,11 @@ public class Avis {
         this.description = description;
     }
 
-    public String getType() {
+    public TypeAvis getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(TypeAvis type) {
         this.type = type;
     }
 

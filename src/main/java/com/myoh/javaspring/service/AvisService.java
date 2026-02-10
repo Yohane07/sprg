@@ -8,9 +8,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+import static com.myoh.javaspring.enums.TypeAvis.NEGATIF;
+import static com.myoh.javaspring.enums.TypeAvis.POSITIF;
+
 @Service
 public class AvisService {
-
     private UtilisateurService utilisateurService;
     private AvisRepository avisRepository;
 
@@ -20,11 +22,20 @@ public class AvisService {
     }
 
 
-    public List<Avis> recupererLesAvis(){
-        return this.avisRepository.findAll();
+    public List<Avis> recupererLesAvis(String typeAvis){
+        if (typeAvis == null){
+            return this.avisRepository.findAll();
+        }else {
+            return this.avisRepository.findAvisByType(typeAvis);
+        }
     }
     public void creerUnAvis(Avis avis){
         Utilisateur utilisateur = this.utilisateurService.recupererOuCreerUnUtilisateur(avis.getUtilisateur());
+        if(avis.getDescription().contains("pas")){
+            avis.setType(NEGATIF);
+        }else{
+            avis.setType(POSITIF);
+        }
         avis.setUtilisateur(utilisateur);
         this.avisRepository.save(avis);
     }

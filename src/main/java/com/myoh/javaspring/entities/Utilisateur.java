@@ -10,12 +10,15 @@ public class Utilisateur {
     //@Column(unique = true)
     private String email;
 
+    private String telephone;
+
     public Utilisateur() {
     }
 
-    public Utilisateur(Integer id,String email) {
+    public Utilisateur(Integer id, String email, String telephone) {
         this.id = id;
         this.email = email;
+        this.telephone = telephone;
     }
 
     public Integer getId() {
@@ -34,5 +37,11 @@ public class Utilisateur {
         this.email = email;
     }
 
+    public String getTelephone() {
+        return telephone;
+    }
 
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
 }

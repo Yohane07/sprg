@@ -27,8 +27,8 @@ public class AvisController {
     }
 
     @GetMapping(produces = APPLICATION_JSON_VALUE )
-    public List<Avis> getAllavis(){
-        return this.avisService.recupererLesAvis();
+    public List<Avis> getAllavis(@RequestParam(required = false) String typeAvis){
+        return this.avisService.recupererLesAvis(typeAvis);
     }
 
 
