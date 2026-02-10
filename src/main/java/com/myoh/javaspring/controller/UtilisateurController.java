@@ -34,4 +34,10 @@ public class UtilisateurController {
     public  Utilisateur getUtilisateurById(@PathVariable Integer id){
         return utilisateurService.recupererUnUtilisateur(id);
     }
+
+    @ResponseStatus(HttpStatus.OK)
+    @DeleteMapping(path = "{id}")
+    public void deleteUtilisateur(@PathVariable Integer id){
+        this.utilisateurService.supprimerUnUtilisateur(id);
+    }
 }

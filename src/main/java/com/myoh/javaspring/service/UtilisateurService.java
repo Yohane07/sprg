@@ -40,4 +40,14 @@ public class UtilisateurService {
         }
         return utilisateurDansLaBDD;
     }
+
+    public void supprimerUnUtilisateur(Integer idUtilisateurASupprimer){
+        Optional<Utilisateur> utilisateurASupprimer = this.utlisateurRepository.findById(idUtilisateurASupprimer);
+        if (utilisateurASupprimer.isPresent()){
+            this.utlisateurRepository.deleteById(idUtilisateurASupprimer);
+            System.out.print("L'utilisateur" + idUtilisateurASupprimer + "a bien été supprimé");
+        }
+        System.out.print("L'utilisateur" + idUtilisateurASupprimer + "n'existe pas");
+
+    }
 }
