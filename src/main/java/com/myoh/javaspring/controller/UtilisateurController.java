@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static org.springframework.http.HttpStatus.NO_CONTENT;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
@@ -39,5 +40,12 @@ public class UtilisateurController {
     @DeleteMapping(path = "{id}")
     public void deleteUtilisateur(@PathVariable Integer id){
         this.utilisateurService.supprimerUnUtilisateur(id);
+    }
+
+
+    @ResponseStatus(NO_CONTENT)
+    @PutMapping(path = "{id}")
+    public void modifierUtilisateur(@PathVariable Integer id, @RequestBody Utilisateur utilisateur){
+        this.utilisateurService.modifierUnUtilisateur(id, utilisateur);
     }
 }

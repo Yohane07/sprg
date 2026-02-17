@@ -50,4 +50,14 @@ public class UtilisateurService {
         System.out.print("L'utilisateur" + idUtilisateurASupprimer + "n'existe pas");
 
     }
+
+    public void modifierUnUtilisateur(Integer id, Utilisateur utilisateur) {
+        Utilisateur utlisateurRechercheDansLaBdd = this.recupererUnUtilisateur(id);
+        if(utlisateurRechercheDansLaBdd.getId() == utilisateur.getId()){
+            utlisateurRechercheDansLaBdd.setEmail(utilisateur.getEmail());
+            utlisateurRechercheDansLaBdd.setTelephone(utilisateur.getTelephone());
+            utlisateurRepository.save(utlisateurRechercheDansLaBdd);
+
+        }
+    }
 }
