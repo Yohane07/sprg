@@ -19,8 +19,7 @@ public class UtilisateurService {
         if (utilisateurExistant == null){
             this.utlisateurRepository.save(utilisateur);
         }else {
-            //TODO: Récupérer l'adresse mail et le renvoyer dans le retour
-            System.out.print("Il y a déjà un utilisateur enregistré avec cette addresse mail");
+            System.out.print("Il y a déjà un utilisateur enregistré avec l'addresse mail suivante: " + utilisateur.getEmail());
         }
     }
 
