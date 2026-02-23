@@ -23,10 +23,12 @@ public class AvisService {
 
 
     public List<Avis> recupererLesAvis(String typeAvis){
-        if (typeAvis == null){
-            return this.avisRepository.findAll();
+        List<Avis> avisDansLaBdd = this.avisRepository.findAvisByType(typeAvis);
+        if (typeAvis != null){
+            return avisDansLaBdd;
         }else {
-            return this.avisRepository.findAvisByType(typeAvis);
+            System.out.println("Aucun avis du type: " + typeAvis + " n'a été trouvé");
+            return this.avisRepository.findAll();
         }
     }
     public void creerUnAvis(Avis avis){
@@ -40,11 +42,15 @@ public class AvisService {
         this.avisRepository.save(avis);
     }
 
-    public Optional<Avis> recupererUnAvis(Integer id){
+    public Avis recupererUnAvis(Integer id){
         Optional<Avis> avisOptional = this.avisRepository.findById(id);
-        if(avisOptional.isPresent()){
-            return avisOptional;
-        }
-        return null;
+        return avisOptional.orElse(null);
     }
+
+    /*
+
+    public void modifierUnAvis(Avis avis, Integer id) {
+        Optional<Avis> avisDansLabdd = recupererUnAvis(id);
+    }
+    */
 }
